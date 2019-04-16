@@ -21,7 +21,7 @@ uafs.pick <- function(data, output, alpha=0.025){
         data_temp <- rep(0, nrow(data))
         data_temp[data_check==j] <- 1
         data_new <- cbind(data_new, data_temp)
-        colnames(data_new)[j] <- paste('V',i,'-',j, sep='')
+        colnames(data_new)[j] <- paste(colnames(data)[i],'-',j, sep='')
       }
       data <- cbind(data, data_new)
     }
