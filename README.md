@@ -14,11 +14,11 @@ library(UAFS)
 load('example_crime_data.RData')
 data_for_imputation <- uafs.pick(data,output,alpha=0.025)
 
-#the typical framework for imputation in R is MICE, and this can be fed directly into it
+# the typical framework for imputation in R is MICE, and this can be fed directly into it
 
 library(MICE)
 
-##we use 80 imputations because in this case 80% of the data is missing
+# we use 80 imputations because in this case 80% of the data is missing
 
 imputed_data <- mice(data_for_imputation, m=80)
 ```
@@ -26,7 +26,7 @@ This final step should take a while. You can reduce m in order to shorten that t
 
 ## Installation
 
-In order to install UAFS, use the devtools package. This can be installed with the command install.packages('devtools') and then loaded with library(devtools). The command install_github('abecker93/UAFS', subdir='UAFS_pack') should correctly install the package. If this does not work the repo can be cloned and the file UAFS_pack_build.R can be run, replacing the first setwd() command with the correct working directory that leads to the folder UAFS_pack within the package.
+In order to install UAFS, use the devtools package. This can be installed with the command `install.packages('devtools')` and then loaded with `library(devtools)`. The command `install_github('abecker93/UAFS', subdir='UAFS_pack')` should correctly install the package. If this does not work the repo can be cloned and the file `UAFS_pack_build.R` can be run, replacing the first `setwd()` command with the correct working directory that leads to the directory `UAFS_pack` within the package.
 
 ## Citation   <a name="citation"/>
 
@@ -35,8 +35,8 @@ If you use UAFS, please cite our paper:
 Andrew Becker and James P. Bagrow, *UAFS: Uncertainty-Aware Feature Selection for Problems with Missing Data* (2019)
 [arXiv:1904.01385](https://arxiv.org/abs/1904.01385)
 
-Here is a bibtex key:
-```text
+Here is a BibTeX entry:
+```bibtex
 @article{becker2019uafs,
   title={UAFS: Uncertainty-Aware Feature Selection for Problems with Missing Data},
   author={Becker, Andrew and Bagrow, James P},
