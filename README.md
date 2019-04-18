@@ -1,7 +1,7 @@
 UAFS: Uncertainty Aware Feature Selection
 =========================================
 
-This repo contains R code for UAFS, or Uncertainty Aware Feature Selection, a method for performing this subset selection prior to imputation. A paper detailing this method is available at https://arxiv.org/pdf/1904.01385.pdf.
+This repo contains R code for UAFS, or _Uncertainty Aware Feature Selection_, a method for performing this subset selection prior to imputation. A paper detailing this method is available at https://arxiv.org/pdf/1904.01385.pdf.
 
 ## Usage
 
@@ -9,7 +9,7 @@ In order to use UAFS your data must first be prepared. To do this an outcome var
 
 In this repo there is also an example data set, example_crime_data.RData. Using this you can follow the example below.
 
-```R
+```Rscript
 library(UAFS)
 load('example_crime_data.RData)
 data_for_imputation <- uafs.pick(data,output,alpha=0.025)
