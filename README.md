@@ -5,7 +5,7 @@ This repo contains R code for UAFS, or _Uncertainty Aware Feature Selection_, a 
 
 ## Usage
 
-In order to use UAFS your data must first be prepared. To do this an outcome variable must be chosen and the the data should then be split into an outcome variable (output) and a set of features (data). There needs to be the same number of rows in the data object as there are elements of the output, otherwise an error will be thrown. Once this is done the function UAFS_pick can be used to select variables to be included in the imputation. Additionally the alpha level to be used can be changed, with the default level being 0.025, by setting alpha in the function. The output from UAFS is the final data concatenated together which then can be fed into imputation algorithms.
+In order to use UAFS your data must first be prepared. To do this an outcome variable must be chosen and the the data should then be split into an outcome variable (output) and a set of features (data). There needs to be the same number of rows in the data object as there are elements of the output, otherwise an error will be thrown. Once this is done the function UAFS_pick can be used to select variables to be included in the imputation. Additionally the $\alpha$ level to be used can be changed, with the default level being 0.025, by setting alpha in the function. The output from UAFS is the final data concatenated together which then can be fed into imputation algorithms.
 
 In this repo there is also an example data set, example_crime_data.RData. Using this you can follow the example below.
 
