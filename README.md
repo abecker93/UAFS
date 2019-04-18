@@ -9,9 +9,9 @@ In order to use UAFS your data must first be prepared. To do this an outcome var
 
 In this repo there is also an example data set, example_crime_data.RData. Using this you can follow the example below.
 
-```Rscript
+```R
 library(UAFS)
-load('example_crime_data.RData)
+load('example_crime_data.RData')
 data_for_imputation <- uafs.pick(data,output,alpha=0.025)
 
 #the typical framework for imputation in R is MICE, and this can be fed directly into it
