@@ -4,7 +4,7 @@
 \alias{uafs.pick}
 \title{Pick significant relationships between output and columns in a data frame}
 \usage{
-uafs.pick(data, output, alpha = 0.025)
+uafs.pick(data, output, alpha = 0.025, return_picks = F)
 }
 \arguments{
 \item{data, }{matrix with output data}
@@ -12,6 +12,8 @@ uafs.pick(data, output, alpha = 0.025)
 \item{output, }{output variable, of type either character or numeric}
 
 \item{alpha, }{default = 0.025,  lower tail probability of not rejecting the null when it is indeed true (r=0)}
+
+\item{return_picks, }{default = F, return vector of picks along with full reduced data set}
 }
 \description{
 Pick significant relationships between output and columns in a data frame

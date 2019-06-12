@@ -2,9 +2,10 @@
 #' @param data, matrix with output data
 #' @param output, output variable, of type either character or numeric
 #' @param alpha, default = 0.025,  lower tail probability of not rejecting the null when it is indeed true (r=0)
+#' @param return_picks, default = F, return vector of picks along with full reduced data set
 #' @export
 
-uafs.pick <- function(data, output, alpha=0.025){
+uafs.pick <- function(data, output, alpha=0.025, return_picks=F){
   if(!is.factor(output) & !is.numeric(output) & !is.integer(output)){
     warning('y_vector is not of type numeric or type factor')
   }
@@ -27,8 +28,9 @@ uafs.pick <- function(data, output, alpha=0.025){
     }
   }
   
-  data <- data[,-which(classes=='factor')] #remove remaining factors
-  
+  if(length(which(classes=='factor'))>0){
+    data <- data[,-which(classes=='factor')] #remove remaining factors
+  }
   if(yclass=='factor' & length(levels(output))==2){ #converts binary factor outcomes into numeric
     output <- as.numeric(output)
   }
@@ -39,7 +41,7 @@ uafs.pick <- function(data, output, alpha=0.025){
   
   all_features <- 1:n
   if(yclass=='factor'){ #conduct tests where the outcome is is 2+-level factor
-    numerics <- all_features[classes=='numeric']
+    numerics <- all_features[classes=='numeric'|classes=='integer']
     factors <- all_features[classes=='factor']
     anova_dat <- data[,numerics]
     chi_dat <- data[,factors]
@@ -47,12 +49,18 @@ uafs.pick <- function(data, output, alpha=0.025){
     picks_2 <- chi.pick(chi_dat, output, alpha)
   }
   if(yclass=='numeric'|yclass=='integer'){ #conduct tests between fully continuous data
-    numerics <- all_features[classes=='numeric']
+    numerics <- all_features[classes=='numeric'|classes=='integer']
     fish_dat <- data[,numerics]
     picks_1 <- fish.pick(fish_dat, output, alpha)
     picks_2 <- numeric(0)
   }
   picks <- c(picks_1, picks_2)
   final_dat <- cbind(output, data[,picks])
+  if(return_picks==T){
+    final_all <- as.list(1:2)
+    final_all[[1]] <- final_dat
+    final_all[[2]] <- picks
+    return(final_all)
+  }
   return(final_dat)
 }
